@@ -14,15 +14,16 @@ const Form = ({ setValueEmoji, toggleDarkMode, darkMode }) => {
 
   return (
     <section className={`form ${darkMode ? "dark-mode" : ""}`}>
-      <form onSubmit={handleSearch}>
+      <form>
         <input
           type="text"
           placeholder="some emoji word..."
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => {
+            setValue(e.target.value);
+            handleSearch(e);
+          }}
         />
-        <button type="button" onClick={allEmojis}>
-          All
-        </button>
+        <button type="button">All</button>
         <div className="toggle-box" onClick={toggleDarkMode}>
           <div className="toggle-circle"></div>
         </div>
